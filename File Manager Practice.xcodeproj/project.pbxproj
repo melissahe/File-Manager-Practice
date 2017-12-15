@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		81D1162E1FE4325100E33664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D1162D1FE4325100E33664 /* AppDelegate.swift */; };
-		81D116301FE4325100E33664 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D1162F1FE4325100E33664 /* ViewController.swift */; };
+		81D116301FE4325100E33664 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D1162F1FE4325100E33664 /* MovieSearchViewController.swift */; };
 		81D116331FE4325100E33664 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D116311FE4325100E33664 /* Main.storyboard */; };
 		81D116351FE4325100E33664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D116341FE4325100E33664 /* Assets.xcassets */; };
 		81D116381FE4325100E33664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D116361FE4325100E33664 /* LaunchScreen.storyboard */; };
+		81D116401FE434C800E33664 /* AppleMovieAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D1163F1FE434C800E33664 /* AppleMovieAPIService.swift */; };
+		81D116421FE437B200E33664 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D116411FE437B200E33664 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		81D1162A1FE4325100E33664 /* File Manager Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "File Manager Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D1162D1FE4325100E33664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81D1162F1FE4325100E33664 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81D1162F1FE4325100E33664 /* MovieSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewController.swift; sourceTree = "<group>"; };
 		81D116321FE4325100E33664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81D116341FE4325100E33664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81D116371FE4325100E33664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81D116391FE4325100E33664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D1163F1FE434C800E33664 /* AppleMovieAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMovieAPIService.swift; sourceTree = "<group>"; };
+		81D116411FE437B200E33664 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				81D1162D1FE4325100E33664 /* AppDelegate.swift */,
-				81D1162F1FE4325100E33664 /* ViewController.swift */,
+				81D1162F1FE4325100E33664 /* MovieSearchViewController.swift */,
 				81D116311FE4325100E33664 /* Main.storyboard */,
+				81D1163F1FE434C800E33664 /* AppleMovieAPIService.swift */,
+				81D116411FE437B200E33664 /* Movie.swift */,
 				81D116341FE4325100E33664 /* Assets.xcassets */,
 				81D116361FE4325100E33664 /* LaunchScreen.storyboard */,
 				81D116391FE4325100E33664 /* Info.plist */,
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D116301FE4325100E33664 /* ViewController.swift in Sources */,
+				81D116301FE4325100E33664 /* MovieSearchViewController.swift in Sources */,
 				81D1162E1FE4325100E33664 /* AppDelegate.swift in Sources */,
+				81D116421FE437B200E33664 /* Movie.swift in Sources */,
+				81D116401FE434C800E33664 /* AppleMovieAPIService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
