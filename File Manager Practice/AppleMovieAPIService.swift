@@ -19,7 +19,7 @@ class AppleMovieAPIService {
     
     func searchMovie(keyword: String, completion: @escaping (Error?, [Movie]?) -> Void) {
         
-        session.dataTask(with: URL(string: "\(searchURL)\(encodedKeyword)")!) { (data, response, error) in
+        session.dataTask(with: URL(string: "\(searchURL)\(keyword)")!) { (data, response, error) in
             
             if let error = error {
                 completion(error, nil)

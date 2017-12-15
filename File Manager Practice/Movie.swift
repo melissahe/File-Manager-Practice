@@ -14,6 +14,7 @@ struct Movie: Codable {
     let collectionName: String?
     let collectionId: Int?
     let trackId: Int
+    let trackName: String?
     let longDescription: String?
 }
 

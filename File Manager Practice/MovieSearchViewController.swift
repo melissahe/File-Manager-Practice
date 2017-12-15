@@ -15,28 +15,69 @@ class MovieSearchViewController: UIViewController {
     @IBOutlet weak var movieCollectionView: UICollectionView!
     @IBOutlet weak var movieSearchBar: UISearchBar!
     
-    var movies: [Movie] = []
+    var movies: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.movieCollectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         movieCollectionView.dataSource = self
         movieCollectionView.delegate = self
         movieSearchBar.delegate = self
-        searchController.delegate
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            let detailVC = segue.destination as! MovieDetailViewController
+            let cell = sender as! MovieCollectionViewCell
+            if let indexPath = movieCollectionView.indexPath(for: cell) {
+                let currentMovie = movies[indexPath.row]
+                
+                detailVC.movie = currentMovie
+                detailVC.imageView = cell.movieImageView.image ?? #imageLiteral(resourceName: "placeholder")
+            }
+        }
+    }
+    
+    func configureMovie(movie: Movie, forCell cell: MovieCollectionViewCell) {
+        DispatchQueue.global().async {
+            do {
+                let imageData = try Data.init(contentsOf: movie.artworkUrl100)
+                
+                let image = UIImage(data: imageData)!
+                
+                DispatchQueue.main.sync {
+                    cell.movieImageView.image = image
+                    cell.setNeedsLayout()
+                }
+            } catch let error {
+                print("image processing error: \(error.localizedDescription)")
+                DispatchQueue.main.sync {
+                    cell.movieImageView.image = #imageLiteral(resourceName: "placeholder")
+                }
+            }
+        }
+    }
+    
 }
 
 extension MovieSearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50 // to do
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
+        let movie = movies[indexPath.row]
         
-        // to do
+        cell.movieImageView.image = nil
+        
+        configureMovie(movie: movie, forCell: cell)
         
         return cell
     }
