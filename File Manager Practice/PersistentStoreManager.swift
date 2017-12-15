@@ -45,13 +45,12 @@ class PersistentStoreManager {
             let data = try encoder.encode(favorites)
             //write that data to the specified path
             try data.write(to: dataFilePath(withPathName: PersistentStoreManager.kPath), options: .atomic)
+            print("============================")
+            print(documentsDirectory())
+            print("============================\n")
         } catch let error {
             print("Encoding error: \(error)")
         }
-        
-        print("============================")
-        print(documentsDirectory())
-        print("============================\n")
     }
     
     //load
@@ -113,9 +112,21 @@ class PersistentStoreManager {
     }
     
     //delete
-    func deleteFavorite(movie: Movie, andImage image: UIImage) {
+    func deleteFavorite(movie: Movie) {
+        //1. delete movie from favorites list
         favorites.remove(at: favorites.index{$0.trackId == movie.trackId}!)
-        //to do
+        
+        //2. delete image from documents folder
+        let imagePath = dataFilePath(withPathName: "\(movie.trackId)")
+        
+        do {
+            try FileManager.default.removeItem(at: imagePath)
+            print("==================================")
+            print(dataFilePath(withPathName: "\(imagePath)"))
+            print("==================================")
+        } catch let error {
+            print("Deleting error: \(error.localizedDescription)")
+        }
     }
     
 }

@@ -46,10 +46,18 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func addToFavoritesButtonPressed(_ sender: UIBarButtonItem) {
-        PersistentStoreManager.manager.addToFavorites(movie: movie, andImage: imageView)
+        let favoriteMovies = PersistentStoreManager.manager.getFavorites()
         
-        favoriteImageBarButtonItem.image = #imageLiteral(resourceName: "favorite-filled-32")
-        favoriteImageBarButtonItem.tintColor = UIColor(red: 1, green: 0.414, blue: 0.515, alpha: 1)
+        if favoriteMovies.contains(where: {$0.trackId == movie.trackId}) {
+            PersistentStoreManager.manager.deleteFavorite(movie: movie)
+            favoriteImageBarButtonItem.image = #imageLiteral(resourceName: "favorite-unfilled-32")
+            favoriteImageBarButtonItem.tintColor = UIColor(red: 0.674, green: 0.686, blue: 0.741, alpha: 1)
+        } else {
+            PersistentStoreManager.manager.addToFavorites(movie: movie, andImage: imageView)
+            
+            favoriteImageBarButtonItem.image = #imageLiteral(resourceName: "favorite-filled-32")
+            favoriteImageBarButtonItem.tintColor = UIColor(red: 1, green: 0.414, blue: 0.515, alpha: 1)
+        }
     }
     
 }
